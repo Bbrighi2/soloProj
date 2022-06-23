@@ -19,8 +19,7 @@ module.exports = {
   },
   resolve: { extensions: ['*', '.js', '.jsx'] },
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    publicPath: '/',
+    path: path.resolve(__dirname, '/dist'),
     filename: 'bundle.js',
   },
   mode: 'development',
@@ -29,10 +28,11 @@ module.exports = {
     host: 'localhost',
     port: 8080,
     static: {
-      directory: path.join(__dirname, './dist'),
+      directory: path.join(__dirname, 'dist'),
+      publicPath: '/build',
     },
     proxy: {
-      '/api/**': {
+      '/api': {
         target: 'http://localhost:3000/',
       },
     },
@@ -46,3 +46,5 @@ module.exports = {
     extensions: ['.js', '.jsx'],
   },
 };
+
+//resolve.fallback: { "zlib": false }

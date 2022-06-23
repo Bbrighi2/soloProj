@@ -3,6 +3,7 @@ import axios from 'axios';
 import { v4 as uuid } from 'uuid';
 
 import Card from './Card';
+// import { response } from '../../server/server';
 
 /*
 TODO:  
@@ -21,20 +22,33 @@ class CardContainer extends Component {
     const options = {
       method: 'GET',
       url: 'https://api-nba-v1.p.rapidapi.com/players',
-      params: { team: '28', season: '2021' },
+      params: {
+        team: this.props.teamNum,
+        season: '2021',
+        search: this.props.playerName,
+      },
       headers: {
         'X-RapidAPI-Key': '6b8886579fmshf55b5525311c212p1b549cjsna4dc171c6c52',
         'X-RapidAPI-Host': 'api-nba-v1.p.rapidapi.com',
       },
     };
-
     axios
       .request(options)
       .then((response) => this.setState({ players: response.data.response }))
       .catch((error) => console.error(error));
   }
+  // axios
+  //   .get(
+  //     `api/players?season=2021&team=${this.props.teamNum}&player=${this.props.playerName}`
+  //   )
+  //   .then((player) => this.setState({ players: player.data.response }))
+  //   .catch((err) => console.error('ERROR:' + err.message));
+  // }
+
   render() {
     console.log(this.state.players);
+    console.log(this.props.teamNum);
+    console.log(this.props.playerName);
     const playerCard = [];
     for (let i = 0; i < this.state.players.length; i++) {
       const player = this.state.players[i];
@@ -68,7 +82,7 @@ class CardContainer extends Component {
             key={uuid()}
             playerName={name}
             number={playerNum}
-            year={player.nba.pro}
+            year={nba.pro}
             height={height !== "'" ? height : null}
             weight={weight}
             college={school}

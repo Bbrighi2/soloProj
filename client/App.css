@@ -22,7 +22,7 @@ body {
   /* border: 1px solid rgb(205, 205, 205); */
   margin-bottom: 10px;
 }
-#search-bar {
+.search-bar {
   height: 25px;
   width: 220px;
   font-size: 17px;
@@ -32,7 +32,20 @@ body {
   margin-right: 40px;
 }
 
-#search-bar:focus {
+.search-bar:focus {
+  outline: none;
+}
+#team-select {
+  height: 25px;
+  width: 220px;
+  font-size: 17px;
+  color: rgb(110, 110, 110);
+  background-color: whitesmoke;
+  border: 1px solid rgb(187, 187, 187);
+  margin-right: 40px;
+}
+
+#team-select:focus {
   outline: none;
 }
 
@@ -63,6 +76,7 @@ body {
   /* margin-bottom: 10px; */
   margin-top: 15px;
   padding: 5px 10px 0 10px;
+  width: 200px;
 }
 
 #cards h3 {
