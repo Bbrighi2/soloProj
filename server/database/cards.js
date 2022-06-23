@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-let writeLocation = `${__dirname}/cards.dev.json`;
+let writeLocation = `${__dirname}/players.json`;
 let cardList = JSON.parse(fs.readFileSync(writeLocation));
 
 const db = {};

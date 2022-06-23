@@ -62,6 +62,7 @@ class MainContainer extends Component {
             <option value="0">Select Team:</option>
             <option value="1">Atlanta Hawks</option>
             <option value="2">Boston Celtics</option>
+            <option value="4">Brooklyn Nets</option>
             <option value="5">Charlotte Hornets</option>
             <option value="6">Chicago Bulls</option>
             <option value="7">Cleveland Cavaliers</option>

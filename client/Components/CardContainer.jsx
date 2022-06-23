@@ -86,6 +86,7 @@ class CardContainer extends Component {
             height={height !== "'" ? height : null}
             weight={weight}
             college={school}
+            teamId={this.props.teamNum}
           />
         );
       }

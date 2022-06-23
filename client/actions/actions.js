@@ -10,19 +10,19 @@ export const addPlayer = () => (dispatch, getState) => {
     .catch((err) => console.error(err));
 };
 
-export const addCard = (lastName) => ({
-  type: types.ADD_CARD,
-  payload: lastName,
-});
+// export const addCard = (lastName) => ({
+//   type: types.ADD_CARD,
+//   payload: lastName,
+// });
 
-export const loadCard = () => (dispatch, getState) => {
-  axios
-    .get('/players')
-    .then(({ data }) => {
-      dispatch({
-        types: types.LOAD_CARD,
-        payload: data,
-      });
-    })
-    .catch((err) => console.error(err));
-};
+// export const loadCard = () => (dispatch, getState) => {
+//   axios
+//     .get('/players')
+//     .then(({ data }) => {
+//       dispatch({
+//         types: types.LOAD_CARD,
+//         payload: data,
+//       });
+//     })
+//     .catch((err) => console.error(err));
+// };

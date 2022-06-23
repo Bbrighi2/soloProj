@@ -1,12 +1,12 @@
 const path = require('path');
 const express = require('express');
-const { resolve } = require('path');
+// const { resolve } = require('path');
 // const db = require('./database/cards');
+// const playerRoute = require('./routes/player.js');
 
 const app = express();
 const PORT = 3000;
 
-const playerRoute = require('./routes/player.js');
 /*
 FIXME: 
   figure out how / why to handle api calls from frontend here
@@ -16,7 +16,9 @@ FIXME:
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use(express.static(path.resolve(__dirname, 'client')));
+app.use(express.static(path.join(__dirname, 'client')));
+
+app.use('/dist', express.static(path.join(__dirname, '../dist')));
 
 // app.use('/player', playerRoute);
 
@@ -24,9 +26,7 @@ app.get('/', (req, res) =>
   res.status(200).sendFile(path.resolve(__dirname, '../client/index.html'))
 );
 
-app.use((req, res) => {
-  res.sendStatus(404);
-});
+app.use((req, res) => res.sendStatus(404));
 
 app.use((err, req, res, next) => {
   const defaultErr = {

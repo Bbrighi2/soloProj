@@ -3,7 +3,12 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: './client/index.js',
+  mode: process.env.NODE_ENV,
+  entry: path.join(__dirname, 'client', 'index.js'),
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'bundle.js',
+  },
   module: {
     rules: [
       {
@@ -17,12 +22,6 @@ module.exports = {
       },
     ],
   },
-  resolve: { extensions: ['*', '.js', '.jsx'] },
-  output: {
-    path: path.resolve(__dirname, '/dist'),
-    filename: 'bundle.js',
-  },
-  mode: 'development',
   devtool: 'eval-source-map',
   devServer: {
     host: 'localhost',
@@ -31,20 +30,22 @@ module.exports = {
       directory: path.join(__dirname, 'dist'),
       publicPath: '/build',
     },
+    historyApiFallback: true,
     proxy: {
       '/api': {
         target: 'http://localhost:3000/',
       },
     },
   },
+  resolve: {
+    extensions: ['*', '.jsx', '.js'],
+  },
   plugins: [
     new HtmlWebpackPlugin({
+      title: 'Development',
       template: './client/index.html',
     }),
   ],
-  resolve: {
-    extensions: ['.js', '.jsx'],
-  },
 };
 
 //resolve.fallback: { "zlib": false }
